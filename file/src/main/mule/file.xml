@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<file:config name="File_Config" doc:name="File Config" doc:id="f2fd964f-6b60-4e3c-92ec-505595c32afc" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f835a1f3-feff-4386-b6c4-18ccb87c43fe" >
+		<http:listener-connection host="0.0.0.0" port="8085" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="97fc4cfb-3078-4acf-b0b3-8a320a41c059" >
+		<http:listener-connection host="0.0.0.0" port="8085" />
+	</http:listener-config>
+	<flow name="fileFlow" doc:id="64dc11e8-1db4-4bb7-9ea7-847799b3c406" >
+		<http:listener doc:name="Listener" doc:id="bc9ec70e-a59c-4f1e-868f-156b59be1846" config-ref="HTTP_Listener_config1" path="/file"/>
+		<file:read doc:name="Read" doc:id="b1ac12c7-6df3-4bd0-afe8-4fd1fe6287e7" config-ref="File_Config" path="D:\mulesoft-projects\helloworldwithdifferentflows\New folder\hi welcome to connector"/>
+	</flow>
+</mule>
